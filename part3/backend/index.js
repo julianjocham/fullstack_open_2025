@@ -73,6 +73,20 @@ app.post('/api/notes', (request, response) => {
     response.json(note)
 })
 
+app.patch('/api/notes/:id', (request, response) => {
+    const id = request.params.id
+    const body = request.body
+    const noteIndex = notes.findIndex(note => note.id === id)
+
+    if (noteIndex !== -1) {
+        notes[noteIndex] = { ...notes[noteIndex], ...body }
+        response.json(notes[noteIndex])
+    } else {
+        response.status(404).end()
+    }
+})
+
+
 const PORT = 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
