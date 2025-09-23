@@ -22,7 +22,7 @@ const Input = ({ label, value, onChange, type = "text", placeholder }) => {
 const PeopleList = ({ persons, onDelete }) => {
     return (
         <div>
-            {persons.map((person) => {
+            {persons?.map((person) => {
                 return (
                     <div key={person.name}>
                         <Person name={person.name} number={person.number} />
@@ -113,7 +113,7 @@ const App = () => {
         }
     }
 
-    const filteredPersons = persons.filter(person =>
+    const filteredPersons = persons?.filter(person =>
         person.name.toLowerCase().includes(filter.toLowerCase())
     )
 
