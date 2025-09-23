@@ -9,9 +9,6 @@ const requestLogger = (request, response, next) => {
     console.log('---')
     next()
 }
-const cors = require('cors')
-
-app.use(cors())
 app.use(express.static('dist'))
 app.use(express.json())
 
