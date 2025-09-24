@@ -19,7 +19,7 @@ const Input = ({ label, value, onChange, type = "text", placeholder }) => {
     )
 }
 
-const PeopleList = ({ persons, onDelete }) => {
+const PersonList = ({ persons, onDelete }) => {
     return (
         <div>
             {persons?.map((person) => {
@@ -145,7 +145,7 @@ const App = () => {
                 </div>
             </form>
             <h1>Numbers</h1>
-            <PeopleList persons={filteredPersons} onDelete={handleDeletePerson} />
+            <PersonList persons={filteredPersons} onDelete={handleDeletePerson} />
         </div>
     )
 }
