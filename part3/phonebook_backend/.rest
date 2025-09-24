@@ -8,3 +8,12 @@ Content-Type: application/json
   "name": "Peter Pan",
   "number": "0000-1111"
 }
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Peter Pan",
+  "number": "0000-2222"
+}

@@ -65,11 +65,23 @@ app.post('/api/persons', (request, response) => {
     Person.findOne({ name: body.name })
         .then(existingPerson => {
             if (existingPerson) {
-                return response.status(400).json({
-                    error: 'name must be unique'
-                })
+                // If person exists, update their phone number
+                const updatedPerson = {
+                    name: body.name,
+                    number: body.number
+                }
+
+                return Person.findByIdAndUpdate(existingPerson._id, updatedPerson, { new: true })
+                    .then(result => {
+                        response.json(result)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        response.status(500).json({ error: 'failed to update person' })
+                    })
             }
 
+            // If person doesn't exist, create new one
             const person = new Person({
                 name: body.name,
                 number: body.number
